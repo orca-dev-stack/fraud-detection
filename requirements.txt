@@ -1,0 +1,17 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+xgboost
+catboost
+kaggle
+matplotlib
+seaborn
+tqdm
+pyyaml
+python-dotenv
+tensorflow
+torch
+mlflow
+fastapi
+uvicorn
