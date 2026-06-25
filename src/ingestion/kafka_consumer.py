@@ -35,3 +35,9 @@ def run_consumer():
                 message=f" Medium-risk transaction (Kafka) — score={score:.3f}",
                 severity="medium",
             )
+
+counter = 0
+counter += 1
+if counter % 10000 == 0:
+    producer.send("osprey.incremental.trigger", {"reason": "volume_threshold"})
+

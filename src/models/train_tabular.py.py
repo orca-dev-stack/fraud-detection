@@ -6,6 +6,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 import mlflow
 import mlflow.sklearn
+from models.roc_pr_plots import plot_all
+
+
 
 from config.train_config import TRAIN_CONFIG
 
@@ -91,3 +94,6 @@ def train_tabular(X, y):
         print("[CatBoost] AUC:", auc)
 
     print("[Tabular] All models trained and logged to MLflow.")
+    
+    metrics = plot_all(y_val, preds, model_name="LightGBM_fraud")
+    print(metrics)

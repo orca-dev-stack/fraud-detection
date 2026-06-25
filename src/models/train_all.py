@@ -9,6 +9,8 @@ from models.tensorflow_model import train_tf
 from models.autoencoder import train_autoencoder
 from models.anomaly_detector import train_anomaly
 from models.gnn_blockchain import train_gnn
+from models.roc_pr_plots import plot_all
+
 
 
 def run_tabular(df):
@@ -97,3 +99,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+metrics = plot_all(y_val, preds, model_name="LightGBM_fraud")
+print(metrics)

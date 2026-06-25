@@ -130,6 +130,24 @@ services:
       - airflow_pgdata:/var/lib/postgresql/data
     restart: unless-stopped
 
+  jupyter:
+    build: ./docker/jupyter
+    container_name: osprey_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./src:/workspace/src
+      - ./notebooks:/workspace/notebooks
+      - ./models_artifacts:/workspace/models_artifacts
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+
 volumes:
   pgdata:
   redisdata:

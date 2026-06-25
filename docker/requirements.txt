@@ -1,0 +1,19 @@
+FROM nvcr.io/nvidia/rapidsai/base:24.02-cuda11.8-runtime-ubuntu22.04
+
+RUN apt-get update && apt-get install -y python3-pip
+
+RUN pip install jupyterlab \
+    kafka-python \
+    tritonclient[grpc] \
+    matplotlib seaborn \
+    scikit-learn \
+    cupy-cuda11x \
+    cudf-cu11 \
+    dask-cudf-cu11 \
+    numba \
+    fastapi uvicorn \
+    redis pika
+
+WORKDIR /workspace
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token='osprey'"]
